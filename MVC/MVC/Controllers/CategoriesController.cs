@@ -17,7 +17,7 @@ namespace MVC.Controllers
             try
             {
                 List<Categories> categories;
-                categories = logic.GetAll().ToList();
+                categories = logic.GetAll();
 
                 return View(categories);
             }

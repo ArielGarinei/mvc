@@ -17,7 +17,7 @@ namespace MVC.Controllers
             try
             {
                 List<Products> lst;
-                lst = logic.GetAll().ToList();
+                lst = logic.GetAll();
                 return View(lst);
             }
             catch (Exception)
