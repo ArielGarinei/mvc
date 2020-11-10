@@ -18,7 +18,8 @@ namespace MVC.Entities
         [Required]
         [StringLength(15)]
         public string CategoryName { get; set; }
-
+        [Required]
+        [StringLength(40)]
         [Column(TypeName = "ntext")]
         public string Description { get; set; }
 

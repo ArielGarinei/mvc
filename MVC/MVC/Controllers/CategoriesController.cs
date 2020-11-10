@@ -40,11 +40,8 @@ namespace MVC.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
                     logic.InsertOne(category);
                     return Redirect("/Categories/ListCategories");
-                }
                 return View(category);
             }
             catch (Exception ex)

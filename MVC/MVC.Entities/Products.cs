@@ -23,7 +23,8 @@ namespace MVC.Entities
 
         public int? CategoryID { get; set; }
 
-        [StringLength(20)]
+        [Required]
+        [StringLength(40)]
         public string QuantityPerUnit { get; set; }
 
         [Column(TypeName = "money")]

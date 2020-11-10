@@ -2,8 +2,6 @@
 using MVC.Logic;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MVC.Controllers
@@ -37,12 +35,9 @@ namespace MVC.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    logic.InsertOne(products);
-                    return Redirect("/Products/ListProducts");
-                }
-                return View(products);
+                logic.InsertOne(products);
+                return Redirect("/Products/ListProducts");
+
             }
             catch (Exception ex)
             {
@@ -70,12 +65,8 @@ namespace MVC.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
                     logic.Update(products);
                     return Redirect("/Products/ListProducts");
-                }
-                return View(products);
             }
             catch (Exception ex)
             {

@@ -1,4 +1,4 @@
-﻿@model  MVC.Entities.Products
+﻿@model MVC.Entities.Products
 @{
     ViewBag.Title = "NewProduct";
 }
@@ -8,24 +8,7 @@
 
 @using (Html.BeginForm("NewProduct", "Products", FormMethod.Post))
 {
-    <div class="row">
-        <div class="col-md-12">
-            <div>
-                @Html.LabelFor(d => d.ProductName)
-                @Html.TextBoxFor(d => d.ProductName, "", new { @class = "form-control" })
-                @Html.ValidationMessageFor(d => d.ProductName, null, new { @class = "red" })
-            </div>
-            <div>
-                @Html.LabelFor(q => q.QuantityPerUnit)
-                @Html.TextBoxFor(q => q.QuantityPerUnit, "", new { @class = "form-control" })
-                @Html.ValidationMessageFor(q => q.QuantityPerUnit, null, new { @class = "red" })
-            </div>
-        </div>
-        <br />
-        <div style="text-align:right;">
-            <input type="submit" class="btn btn-primary" value="Save" />
-        </div>
-    </div>
+    @Html.Partial("_FromProduct");
 }
 
 
