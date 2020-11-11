@@ -1,5 +1,6 @@
 ﻿using MVC.Entities;
 using MVC.Logic;
+using MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +19,15 @@ namespace MVC.Controllers
             {
                 List<Categories> categories;
                 categories = logic.GetAll();
+                List<CategoriesView> categoriesViews = (from category in categories
+                                                      select new CategoriesView()
+                                                    {
+                                                        CategoryID = category.CategoryID,
+                                                        CategoryName = category.CategoryName,
+                                                        Description = category.Description,
+                                                    }).ToList();
 
-                return View(categories);
+                return View(categoriesViews);
             }
             catch (Exception)
             {

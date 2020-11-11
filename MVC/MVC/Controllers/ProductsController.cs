@@ -1,7 +1,10 @@
 ﻿using MVC.Entities;
 using MVC.Logic;
+using MVC.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
 using System.Web.Mvc;
 
 namespace MVC.Controllers
@@ -14,9 +17,17 @@ namespace MVC.Controllers
         {
             try
             {
+                
                 List<Products> lst;
                 lst = logic.GetAll();
-                return View(lst);
+                List<ProductsView> productsViews = (from products in lst
+                                                    select new ProductsView()
+                                                    {   ProductID = products.ProductID,
+                                                        ProductName = products.ProductName,
+                                                        QuantityPerUnit = products.QuantityPerUnit
+                                                    }).ToList();
+
+                return View(productsViews);
             }
             catch (Exception)
             {
@@ -37,7 +48,6 @@ namespace MVC.Controllers
             {
                 logic.InsertOne(products);
                 return Redirect("/Products/ListProducts");
-
             }
             catch (Exception ex)
             {
@@ -85,9 +95,7 @@ namespace MVC.Controllers
             {
                 //TODO:Mostrar mensaje en pantalla;
                 return Redirect("/Products/ListProducts");
-
             }
-
         }
     }
 }
